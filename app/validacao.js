@@ -4,8 +4,16 @@ function verficarValorValidoChute(chute) {
 
     // se não for número, exibe mensagem de erro
     if (chuteForInvalido(numero)) {
-        elementoChute.innerHTML += `<div>Valor inválido</div>`
-        return
+        if (chute.toUpperCase() === "GAME OVER") {
+            document.body.innerHTML = `
+                <h2>GAME OVER</h2>
+                <h3>O número secreto era ${numeroSecreto}</h3>
+                <button onclick="window.location.reload()">Jogar Novamente</button>
+            `
+            document.body.style.backgroundColor = "black"
+        } else {
+            elementoChute.innerHTML += `<div>Valor inválido</div>`  
+        }
     }
 
     if (chuteMaiorOuMenor(numero)) {
